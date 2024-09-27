@@ -22,7 +22,7 @@ export default function Signup() {
         style={{ backgroundImage: `url(${Thumbnail})` }}
         className="min-h-screen bg-cover bg-center flex flex-col justify-center items-center "
       >
-        <div className="bg-purewhite border border-black rounded-lg m-2 p-4">
+        <div className="bg-purewhite border border-accent rounded-lg m-2 p-4">
           <h2 className="text-center font-bold text-xl">Signup</h2>
           <form action="" className="m-2 p-2 flex flex-col space-y-5 ">
             <div className="flex sm:space-x-3">
