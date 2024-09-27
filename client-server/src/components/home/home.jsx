@@ -3,8 +3,10 @@ import Main from '../../assets/main.jpg'
 export default function Home() {
   return (
     <>
-    <div>
-       <img src={Main} alt="" />
+    <div style={{backgroundImage:`url(${Main})`}} className=' bg-cover bg-center min-h-screen'>
+      <div>
+        
+      </div>
     </div>
     </>
   )
