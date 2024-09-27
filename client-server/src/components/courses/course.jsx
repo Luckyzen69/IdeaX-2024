@@ -88,8 +88,10 @@ export default function Course() {
                             let { id, title, thumbnail } = data;
                             return (
                                 <div key={id} className='border p-4 m-2 rounded-md'>
-                                    <img className='mb-4' src={thumbnail} alt={title} />
-                                    <h4>{title}</h4>
+                                    <Link to={`/courses/player/${id}`}>
+                                     <img className='mb-4' src={thumbnail} alt={title} />
+                                     <h4>{title}</h4>
+                                    </Link>
                                 </div>
                             );
                         })}
@@ -103,8 +105,10 @@ export default function Course() {
                             let { id, title, thumbnail } = data;
                             return (
                                 <div key={id} className='border p-4 m-2 rounded-md'>
+                                    <Link to={`/courses/player/${id}`}>
                                     <img className='mb-4' src={thumbnail} alt={title} />
                                     <h4>{title}</h4>
+                                    </Link>
                                 </div>
                             );
                         })}
