@@ -36,13 +36,19 @@ const updatePlanById = async (req, res) => {
   const readPlansByAuthorId = async (req, res) => {
     try {
       const { authorId } = req.params;
-      const plans = await Plan.findOne({ authorId:authorId });
-      if (!plans.length) {
-        return res.status(404).json({ message: "No plans found for this author" });
+      console.log('hello')
+      const plans = await Plan.find({ authorId });
+      console.log(plans)
+      if (plans.length === 0) {
+        return res
+          .status(404)
+          .json({ message: "No plans found for this user" });
       }
-      res.status(200).json(plans);
+     return res.status(200).json(plans);
     } catch (error) {
-      res.status(500).json({ message: "Error reading plans", error });
+      res
+        .status(500)
+        .json({ message: "Failed to read plans", error: error.message });
     }
   };
 
@@ -58,7 +64,6 @@ const updatePlanById = async (req, res) => {
       res.status(500).json({ message: "Error deleting plan", error });
     }
   };
-
 
 
 module.exports = {

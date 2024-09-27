@@ -27,10 +27,10 @@ const createDiaryEntry = async (req, res) => {
 const updateDiaryEntryById = async (req, res) => {
   try {
     const { id } = req.params;
-    const { planId, task, date, revenue, cost } = req.body;
+    const {  task, date, revenue, cost } = req.body;
     const updatedDiaryEntry = await Diary.findByIdAndUpdate(
       id,
-      { planId, task, date, revenue, cost },
+      {  task, date, revenue, cost },
       { new: true }
     );
     if (!updatedDiaryEntry) {

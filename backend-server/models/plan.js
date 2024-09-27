@@ -9,7 +9,8 @@ const planSchema = new Schema({
     },
     authorId: {
         type: Schema.Types.ObjectId,
-        ref: 'User',
+        required: true,
+        ref: 'User'
    
     }
 });

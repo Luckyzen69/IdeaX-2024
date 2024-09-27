@@ -9,7 +9,7 @@ const diarySchema = new Schema({
         ref: 'Author'
     },
     task: {
-        type: [String],
+        type: String,
         required: true
     },
     date: {
