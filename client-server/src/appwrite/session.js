@@ -16,23 +16,11 @@ export const signup = (email, password) => {
   );
 };
 
-export const signin = (email, password, rememberMe) => {
-  const response = account.createEmailSession(email, password);
+export const signin = (email, password) => {
+  const response = account.createEmailPasswordSession(email, password);
   response.then(
     function (response) {
       console.log("Account is logged in", response);
-      if (!rememberMe) {
-        window.onbeforeunload = function () {
-          account.deleteSession("current").then(
-            function () {
-              console.log("Session deleted on window close");
-            },
-            function (error) {
-              console.log("Error deleting session:", error);
-            }
-          );
-        };
-      }
       return response;
     },
     function (error) {
@@ -51,4 +39,27 @@ export const signout = async () => {
         console.log('Logout error:', error);
         throw error;
     }
+};
+
+
+export const getCurrentUser = async () => {
+  try {
+    const response = await account.get();
+    console.log('Current user details:', response);
+    return response;
+  } catch (error) {
+    console.log('Error fetching current user details:', error);
+    throw error;
+  }
+};
+
+export const logout = async () => {
+  try {
+    const response = await account.deleteSession('current');
+    console.log('Logout successful:', response);
+    return response;
+  } catch (error) {
+    console.log('Logout error:', error);
+    throw error;
+  }
 };
