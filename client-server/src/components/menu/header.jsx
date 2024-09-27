@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 export default function Header() {
   return (
     <>
-    <div className='flex justify-between items-center m-2 mr-20 fixed top-2 left-10'>
+    <div className='flex justify-between items-center m-2 mr-20 fixed top-2 left-10 z-50'>
         <Link to='/' className='flex items-center cursor-pointer'>
             <img src={Logo} alt="" />
             <h6 className='text-xl'>Agro-Sikshya</h6> 

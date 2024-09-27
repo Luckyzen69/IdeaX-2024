@@ -43,7 +43,7 @@ let Datas = [
     id: "banana-farming",
     username: "Agro-sikshya",
     thumbnail:Banana,
-    type:"animal",
+    type:"plant",
     title: "केरा खेतीको बढ्दो बजार, लगानी सय, आम्दानी हजार | Banana Farming In Nepal",
     features:[
       "भिडियोमा नेपालमा बढ्दो कुखुरा पालन व्यवसाय, विशेषगरी बोलर कुखुरा पालनको बारेमा चर्चा गरिएको छ।", 
@@ -104,7 +104,7 @@ let Datas = [
     id: "pig-farming",
     username: "Agro-sikshya",
     thumbnail:Pig,
-    type:"plant",
+    type:"animal",
     title: "बङ्गुर पालेर बन्ने होइन त मालामाल? | Pig Farming In Nepal",
     features:[
       "भिडियोमा नेपालमा बढ्दो कुखुरा पालन व्यवसाय, विशेषगरी बोलर कुखुरा पालनको बारेमा चर्चा गरिएको छ।", 
