@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
-import Datas from './provineceAndSeasonalCrops';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Datas from './provineceAndSeasonalCrops';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css'; // Import Leaflet CSS
+import L from 'leaflet';
 import Barley from '../../assets/crops-image/Barley.jpg';
 import Cardamom from '../../assets/crops-image/Cardamom.jpg';
 import Corn from '../../assets/crops-image/Corn.jpg';
@@ -20,6 +23,13 @@ import Pulse from '../../assets/crops-image/Pulse.jpg';
 import Orange from '../../assets/crops-image/orange.jpg';
 import Tomato from '../../assets/crops-image/tomato.jpg';
 import Cauliflower from '../../assets/crops-image/cauliflower.jpg';
+
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
+  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png'
+});
 
 const cropImages = {
   "जौ": Barley,
@@ -46,11 +56,26 @@ const cropImages = {
 export default function Region() {
   const [selectedProvince, setSelectedProvince] = useState(Datas.provinces[0]);
   const [selectedSeason, setSelectedSeason] = useState(selectedProvince.seasonalCrops[0]);
+  const [mapCenter, setMapCenter] = useState([27.7172, 85.3240]); // Default center: Kathmandu
+  const [userLocation, setUserLocation] = useState({ latitude: null, longitude: null });
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        setUserLocation({ latitude, longitude });
+        setMapCenter([latitude, longitude]); // Center the map on user's location
+      },
+      (error) => {
+        console.error("Error getting location", error);
+      }
+    );
+  }, []);
 
   const handleProvinceChange = (e) => {
     const province = Datas.provinces.find(p => p.name === e.target.value);
     setSelectedProvince(province);
-    setSelectedSeason(province.seasonalCrops[0]); // Reset to the first seasonal crop
+    setSelectedSeason(province.seasonalCrops[0]); 
   };
 
   const handleSeasonChange = (e) => {
@@ -60,7 +85,7 @@ export default function Region() {
 
   return (
     <div className='flex flex-col m-2 p-2 mt-10'>
-      <h1 className='text-center text-2xl'>स्थान-आधारित क्रप खोजकर्ता      </h1>
+      <h1 className='text-center text-2xl'>स्थान-आधारित क्रप खोजकर्ता</h1>
       <p className='text-center'>आफ्नो स्थान छान्नुहोस् र आफ्नो स्थानको लागि उत्तम के हो पत्ता लगाउनुहोस्।</p>
       <form className='flex flex-col justify-center m-4'>
         <div className='m-2 p-2'>
@@ -99,7 +124,7 @@ export default function Region() {
       </form>
 
       <div className='m-2 p-2'>
-          <h2 className='text-lg'> {selectedSeason.season} को लागि बाली:</h2>
+        <h2 className='text-lg'>{selectedSeason.season} को लागि बाली:</h2>
         <ul>
           {selectedSeason.crops.map(crop => (
             <li key={crop} className='border rounded-xl p-2 m-2 sm:m-10 flex bg-white items-center'>
@@ -109,7 +134,7 @@ export default function Region() {
                   <span className='font-bold ml-2 text-primary text-xl'>{crop}</span>
                   <p className='text-xl p-2'>{crop} कसरी बढाउने बारे जान्नुहोस् </p>
                   <div className='flex'>
-                    <Link to={`/regional-crops/Tomato`} > 
+                    <Link to={`/regional-crops/${crop}`}> 
                       <p className='border p-2 rounded-xl text-white bg-accent hover:bg-fourth'>थप विवरण</p>
                     </Link>
                   </div>
@@ -118,6 +143,32 @@ export default function Region() {
             </li>
           ))}
         </ul>
+      </div>
+
+      {/* Display user location */}
+      <div className='m-2 p-2'>
+        <h2 className='text-lg'>तपाईंको वर्तमान स्थान:</h2>
+        {userLocation.latitude && userLocation.longitude ? (
+          <p>अक्षांश: {userLocation.latitude}, रेखांश: {userLocation.longitude}</p>
+        ) : (
+          <p>स्थान पत्ता लगाइरहेको छ...</p>
+        )}
+      </div>
+
+      {/* OpenStreetMap Section */}
+      <div className='m-2 p-2 border rounded-lg'>
+        <h2 className='text-lg'>नक्सामा हेर्नुहोस्</h2>
+        <MapContainer center={mapCenter} zoom={10} className='h-96 rounded-lg'>
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          />
+          <Marker position={mapCenter}>
+            <Popup>
+              तपाईंको स्थान
+            </Popup>
+          </Marker>
+        </MapContainer>
       </div>
     </div>
   );
