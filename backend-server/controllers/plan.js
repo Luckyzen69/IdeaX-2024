@@ -2,6 +2,7 @@ const Plan = require("../models/plan");
 
 const createPlan = async (req, res) => {
   try {
+
     const { plan, authorId } = req.body;
     const newPlan = new Plan({
       plan,
@@ -64,7 +65,6 @@ const updatePlanById = async (req, res) => {
       res.status(500).json({ message: "Error deleting plan", error });
     }
   };
-
 
 module.exports = {
   createPlan,
