@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
     },
     role: {
         type: String,
-        enum: ['learner', 'educator', 'organizer'],
+        enum: ['user', 'admin'],
         default: 'user'
     },
     gender: {
@@ -29,6 +29,8 @@ const userSchema = new mongoose.Schema({
         required: true
     }
 });
+
+
 
 const User = mongoose.model('User', userSchema);
 
