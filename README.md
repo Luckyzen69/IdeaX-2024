@@ -5,16 +5,16 @@ We are Team Botanical and our idea is all about empowering agribusiness entrepre
  ### 1. A Structured Course
 It offer complete guidance and full information in different farming areas (plant farming, animal farming, etc.) with a sequential video tutorial.
 
-### Agribusiness Recomendation System
+### 2. Agribusiness Recomendation System
 Suggest business types based on:
 + Location (urban/rural).
 + Season and climatic conditions.
 + Soil Quality.
 
-### Financial Diary
+### 3. Financial Diary
 The Financial Record Tracker helps users easily log income and expenses, manage budgets, track profitability, and gain insights into financial performance, ensuring efficient financial management for their agribusiness.
 
-### Ask To Expert
+### 4. Ask To Expert
 It offer complete guidance and full information in different farming areas (plant farming, animal farming, etc.) with a sequential video tutorial.
 
 ### The Tech Stack We Used For This Project
