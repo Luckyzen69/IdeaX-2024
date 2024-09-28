@@ -7,6 +7,7 @@ const app = express();
 const url = process.env.MONGODB_URI;
 port = process.env.port;
 
+
 connectMongoDb(url);
 
 app.use(express.urlencoded({ extended: false }));
@@ -48,6 +49,10 @@ app.post('/api/token', async (req, res) => {
 
 app.use('/',routes)
 
+
+
 app.listen(port, () => {
   console.log(`server is listen at port:${port}`);
 });
+
+

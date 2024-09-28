@@ -36,6 +36,24 @@ const Category = () => {
   const [isEditing, setIsEditing] = useState(null);
   const [updatedPlan, setUpdatedPlan] = useState({ plan: "" });
 
+
+const calculateTotals = () => {
+    if (!diaries) return { totalRevenue: 0, totalCost: 0 };
+    const totalRevenue = diaries.reduce((acc, diary) => acc + Number(diary.revenue), 0);
+    const totalCost = diaries.reduce((acc, diary) => acc + Number(diary.cost), 0);
+
+    return { totalRevenue, totalCost };
+};
+
+useEffect(() => {
+    const totals = calculateTotals();
+    setplandata((prevData) => ({
+        ...prevData,
+        totalRevenue: totals.totalRevenue,
+        totalCost: totals.totalCost,
+    }));
+}, [diaries]);
+
   console.log(diaries, plandata);
   const fetchData = async () => {
     try {
@@ -78,11 +96,11 @@ const Category = () => {
   }
 
   const pieData = {
-    labels: ["आम्दानी", "खर्च", "बचत"],
+    labels: ["आम्दानी", "खर्च", " नाफा / नोक्सान"],
     datasets: [
       {
         label: "Rs.",
-        data: [300, 50, 100],
+        data: [plandata.totalRevenue, plandata.totalCost, plandata.totalRevenue - plandata.totalCost],
         backgroundColor: ["green", "red", "yellow"],
         borderColor: [
           "rgba(75, 192, 192, 1)",

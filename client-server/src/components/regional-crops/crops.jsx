@@ -19,7 +19,6 @@ export default function Crops({ latitude, longitude }) {
       });
 
       const token = tokenResponse.data.token;
-
       const dataResponse = await axios.get(`https://soil.narc.gov.np/soil/soildata/?lon=${lon}.695&lat=${lat}`, {
         headers: {
           Authorization: `Bearer ${token}`,
