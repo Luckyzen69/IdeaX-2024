@@ -30,9 +30,7 @@ export default function Part() {
                                             </span>
                                         </summary>
                                         <iframe src={video.url}  className='sm:w-[800px] sm:h-[400px]' title={`Video Player ${index + 1}`}></iframe>
-                                        <p className="group-open:animate-fadeIn mt-3 text-neutral-600">
-                                            Watch the video to learn more about tomato farming!
-                                        </p>
+                                       <p>पूर्ण भिडियो हेर्नुहोस् र खेतीका बारेमा सिक्नको लागि आवश्यक जानकारी प्राप्त गर्नुहोस्!    </p>
                                     </details>
                                 </div>
                             ))}

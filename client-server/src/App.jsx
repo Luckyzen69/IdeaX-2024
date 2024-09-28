@@ -9,16 +9,13 @@ import Player from "./components/courses/player";
 import Login from "./components/auth/login";
 import Signup from "./components/auth/signup";
 import User from "./components/user/user";
-import Region from "./components/regional-crops/region";
 import CropData from "./components/regional-crops/cropsData";
 import { getCurrentUser, logout } from "./appwrite/session";
 import Community from "./components/community/community";
 import Market from "./components/market/market";
-
 import Category from "./components/businessDiary/category/category";
 
 import Crops from "./components/regional-crops/crops";
-
 import Diary from "./components/businessDiary/diary";
 import Parent from "./components/regional-crops/PARENT.JSX";
 import Diseases from "./components/courses/diseases";
@@ -69,7 +66,7 @@ function App() {
             element={isLoggedIn ? <Parent /> : <Home />}
           />
           <Route
-            path="/regional-crops/crops"
+            path="/regional-crops/lon=27.6938&lat=85.3239"
             element={isLoggedIn ? <Crops /> : <Home />}
           />
           <Route
@@ -77,7 +74,7 @@ function App() {
             element={isLoggedIn ? <Diary /> : <Home />}
           />
           <Route
-            path="/regional-crops/टमाटर"
+            path="/regional-crops/tomatoguide"
             element={isLoggedIn ? <CropData /> : <Home />}
           />
           <Route

@@ -1,67 +1,46 @@
-import axios from 'axios';
-import React, { useState, useEffect } from 'react';
-
-export default function Crops({ latitude, longitude }) {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-
-  const fetchData = async () => {
-    setLoading(true);
-    setError(null);
-    
-    try {
-      // Fetch the token each time before making a request
-      const tokenResponse = await axios.post('https://soil.narc.gov.np/api/token', {
-        email: "thakurizen2@gmail.com",
-        password: "Luckyzen@11223344",
-      });
-
-      const token = tokenResponse.data.token;
-
-
-      let config = {
-        method: 'get',
-        maxBodyLength: Infinity,
-        url: `https://soil.narc.gov.np/soil/soildata/?lon=${longitude}&lat=${latitude}`,
-        headers: { 
-          'Authorization': `Bearer ${token}`
-        }
-      };
-
-      // Use await to capture the response of the request
-      const dataResponse = await axios.request(config);
-      setData(dataResponse.data);
- 
-
-    } catch (error) {
-      setError(error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    if (latitude && longitude) {
-      fetchData();
-    }
-  }, [latitude, longitude]);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+import React from 'react';
+import Season from './season';
+export default function Crops() {
+  let datas = [{
+    "coord": {
+      "lon": 85.332,
+      "lat": 27.697
+    },
+    "parentsoil": "Fluvial non calcareous",
+    "ph": 6.32,
+    "clay": "19.22 %",
+    "organicMatter": "2.47 %",
+    "totalNitrogen": "0.13 %",
+    "boron": "1.07 ppm",
+    "p2o5": "428.57 kg/ha",
+    "sand": "49.69 %"
+  }];
 
   return (
-    <div>
-      <h1>Fetched Data</h1>
-      <ul>
-        {data.map((item) => (
-          <li key={item.id}>{item.name}</li>
-        ))}
-      </ul>
+    <>
+    <div className='flex '>
+      <div className='border border-accent m-3 p-3'>
+        <p className='font-bold'>Soil Details</p>
+      {
+        datas.map((data, index) => {
+          return (
+            <div key={index}>
+              <p className='font-bold'>Latitude: <span className='font-medium'> {data.coord.lat}</span></p>
+              <p className='font-bold'>  Parent Soil:<span className='font-medium'> {data.parentsoil} </span></p>
+              <p className='font-bold'>  pH:<span className='font-medium'> {data.ph} </span></p>
+              <p className='font-bold'>  Clay: <span className='font-medium'>{data.clay} </span></p>
+              <p className='font-bold'>  Organic Matter:<span className='font-medium'> {data.organicMatter} </span></p>
+              <p className='font-bold'>  Total Nitrogen:<span className='font-medium'> {data.totalNitrogen} </span></p>
+              <p className='font-bold'>  Boron:<span className='font-medium'> {data.boron} </span></p>
+              <p className='font-bold'>  P2O5: <span className='font-medium'>{data.p2o5} </span></p>
+              <p className='font-bold'>  Sand: <span className='font-medium'>{data.sand} </span></p>
+            </div>
+          );
+        })
+      }
+      </div>
     </div>
+      <Season/>
+        </>
   );
 }
