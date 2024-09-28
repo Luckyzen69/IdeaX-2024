@@ -12,11 +12,13 @@ import User from "./components/user/user";
 import Region from "./components/regional-crops/region";
 import CropData from "./components/regional-crops/cropsData";
 import { getCurrentUser } from "./appwrite/session";
+import Community from "./components/community/community";
+import Market from "./components/market/market";
 
 import Diary from "./components/businessDiary/diary";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   useEffect(() => {
     const checkUser = async () => {
@@ -42,6 +44,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/user" element={<User />} />
+          <Route path="/community" element={<Community />} />
+          <Route path="/market" element={<Market />} />
           <Route path="/regional-crops" element={<Region />} />
           <Route path="/business-diary" element={<Diary />} />
           <Route path="/regional-crops/Tomato" element={<CropData />} />
