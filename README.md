@@ -18,7 +18,10 @@ The Financial Record Tracker helps users easily log income and expenses, manage 
 It offer complete guidance and full information in different farming areas (plant farming, animal farming, etc.) with a sequential video tutorial.
 
 ### The Tech Stack We Used For This Project
-We used the following technologies for this project: React ,TailwindCSS, NodeJs, ExpressJS, Mongodb, Appwrite, Vercel,NPM
+We used the following technologies for this project: React ,TailwindCSS, NodeJs, ExpressJS, Mongodb, Appwrite, Vercel,NPM.
+
+#### Why this teck stack?
+We chose this tech stack to deliver information to farmers quickly, ensuring they can easily assess if the website meets their needs and understand the features it offers.
 
 
 ## Hackathon Experience
