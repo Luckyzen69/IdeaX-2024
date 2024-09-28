@@ -17,10 +17,10 @@ export default function Community() {
 
 
     emailjs.send(
-      'service_vke3tog',    
-      'template_7l8lmuj',   
+      'service_w4cauef',    
+      'template_ra2r67d',   
       formData,             
-      'NSzYLrEbvDfYpRAoh'        
+      'c5wqd7SdbTKB78UXA'        
     )
     .then((result) => {
       console.log('Email sent successfully:', result.text);

@@ -5,6 +5,7 @@ export default function Crops({ latitude, longitude }) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const axios = require('axios');
 
   const fetchData = async () => {
     setLoading(true);

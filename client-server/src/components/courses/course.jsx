@@ -5,7 +5,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from 'react-router-dom';
 import { IoIosArrowBack,IoIosArrowForward  } from "react-icons/io";
-
 // Custom Next Arrow Component
 const NextArrow = ({ onClick }) => {
     return (
@@ -93,6 +92,7 @@ export default function Course() {
                                      <h4>{title}</h4>
                                     </Link>
                                 </div>
+                           
                             );
                         })}
                     </Slider>

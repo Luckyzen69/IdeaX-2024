@@ -17,6 +17,7 @@ import Market from "./components/market/market";
 import Crops from "./components/regional-crops/crops";
 import Diary from "./components/businessDiary/diary";
 import Parent from "./components/regional-crops/PARENT.JSX";
+import Diseases from "./components/courses/diseases";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
 
@@ -46,6 +47,7 @@ function App() {
           <Route path="/user" element={<User />} />
           <Route path="/community" element={<Community />} />
           <Route path="/market" element={<Market />} />
+          <Route path="/courses/player/:id/diseases" element={<Diseases />} />
           <Route path="/regional-crops" element={<Parent />} />
           <Route path="/regional-crops/crops" element={<Crops />} />
           <Route path="/business-diary" element={<Diary />} />

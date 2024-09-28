@@ -82,9 +82,60 @@ let Datas = [
       "नेपालमा मासु र अण्डाको माग तथा उत्पादन वृद्धि भइरहेकाबारे तथ्याङ्क प्रस्तुत गरिन्छ।", 
       "कुखुरा फार्म सञ्चालन गर्दा ध्यान दिनुपर्ने कुराहरू र लाभदायक बनाउनका लागि सुझावहरू प्रदान गरिएको छ।", 
       "बैंक र सरकारी योजनाबाट कर्जा तथा सहयोगको बारेमा जानकारी दिइएको छ।"],
-    url: "https://www.youtube.com/embed/hfxztk2kOQ8?si=EnuKlvmAYl-zUkJv",
-    description: " we present tomato farming as an affordable and profitable business in Nepal. The Video highlights the business opportunity, resources, challenges, finding and subsidy provided by the government to start a cut flower business in Nepal."
-  },
+      videoURl:[
+        {
+
+          urlTitle:"Introduction to tomato farming",
+          url: "https://drive.google.com/file/d/1StXCi2HmJ64AfTuoeAyuXTemTGhOieGR/preview",
+        },{
+
+          urlTitle:"hawa pani ra samayae",
+          url:"https://drive.google.com/file/d/1dAoKGDWXn6SpjqYXNovxPDK_5InGtJ-8/preview",
+        },{
+
+          urlTitle:"Mato ra Jaat",
+          url:"https://drive.google.com/file/d/1Pi9De8YgC8yg8pdZ80bfFIHwm9r8zl47/preview",
+        },{
+
+          urlTitle:"Biruwa kasri tayar Garne",
+          url:"https://drive.google.com/file/d/1gO8do-N7ni28maR2UtZiOtkOAeHetj3Q/preview",
+        },{
+
+          urlTitle:"Jagga ko Tayari kasari Garne.",
+          url:"https://drive.google.com/file/d/1GmcBczqtQbAL3hFS-_DCYRDUYeDTbLiU/preview",
+        },{
+
+          urlTitle:"Narsari byadko Tayari kassari garne",
+          url:"https://drive.google.com/file/d/1Bj_s-2B758KeKYqMd3HBcxfVpUfrgtMd/preview",
+        },{
+
+          urlTitle:" Biu Dar kati rakhne ra upachar kasri garne",
+          url:"https://drive.google.com/file/d/1mUY4CNGqAq-D5Vr8n4_KJ2gs9zgGizJi/preview",
+        },{
+
+          urlTitle:"Biu kasari Charne",
+          url:"https://drive.google.com/file/d/1Si4PEzzuY5myplmogk7LTfx-BMUYQ5tg/preview",
+        }  ,{
+
+          urlTitle:"Dyang banaune bidi",
+          url:"https://drive.google.com/file/d/1SxbQ9XDsUJjWqXTyPTjVY6gJHTqzP6pJ/preview",
+        },{
+
+          urlTitle:"berna ukhalne ra upachar kasri garne",
+          url:"https://drive.google.com/file/d/1StXCi2HmJ64AfTuoeAyuXTemTGhOieGR/preview",
+        },{
+          urlTitle:" berna ukhalne ra upachar kasri garne",
+          url:"https://drive.google.com/file/d/1qO14pVG7YCW8eT32-ynDqqqhgsbpq9s6/preview",
+        },{
+
+          urlTitle:" biruwa kasari ropne",
+          url:"https://drive.google.com/file/d/1FGOGkqNZ816J_1RtyEXhbCVQa7YDXqYT/preview",
+        },{
+          urlTitle:" Chape halne bidi",
+          url:"https://drive.google.com/file/d/14O-SPNP1CYUSN4tg7rh0xrJOrf3HvtId/preview",
+        } ]
+      }
+        ,
   {
     id: "mushroom-farming",
     username: "Agro-sikshya",
