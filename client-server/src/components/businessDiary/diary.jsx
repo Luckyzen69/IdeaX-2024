@@ -120,265 +120,256 @@ const Diary = () => {
   }, []);
 
   return (
-    <div className="border  border-black w-full h-full p-4">
-      <h1 className="mb-5 text-xl font-semibold">व्यवसाय डायरी</h1>
-      <div className="flex justify-between space-x-4 w-[100vh] ">
-        <div className=" w-[45%]  p-4   bg-blue-100 rounded-lg">
-          <h2 className="text-lg  font-bold">कुल आम्दानी</h2>
-          <p className="text-xl">Rs. 5000</p>
-        </div>
-        <div className=" w-[45%]  p-4   bg-blue-100 rounded-lg">
-          <h2 className="text-lg  font-bold">कुल खर्च</h2>
-          <p className="text-xl">Rs.4000</p>
-        </div>
-        {true ? (
-          <div className=" w-[45%]   p-4   bg-blue-100 rounded-lg">
-            <h2 className="text-lg  font-bold">कुल  नाफा</h2>
-            <p className="text-xl text-yellow-00 ">+ Rs.500 </p>
-          </div>
-        ) : (
-          <div className=" w-[45%]  p-4   bg-blue-100 rounded-lg">
-            <h2 className="text-lg  font-bold">कुल नोक्सान</h2>
-            <p className="text-xl text-orange-500 ">- Rs.300 </p>
-          </div>
-        )}
+    <div className="border border-black h-auto sm:w-full sm:h-full p-4 flex flex-col">
+  <div>
+    <h1 className="mb-5 text-xl font-semibold">व्यवसाय डायरी</h1>
+    <div className="flex flex-col sm:flex-row justify-between space-y-4 sm:space-y-0 sm:space-x-4 w-full">
+      <div className="w-full sm:w-[45%] p-4 bg-blue-100 rounded-lg">
+        <h2 className="text-lg font-bold">कुल आम्दानी</h2>
+        <p className="text-xl">Rs. 5000</p>
       </div>
-
-      <div className="flex w-[80vh] mt-16 justify-between ">
-        <button
-          className={`py-1  w-[25vh] border border-gray-400 rounded ${
-            activePanel === "transactions"
-              ? "bg-blue-500 text-white "
-              : "  bg-blue-100"
-          } `}
-          onClick={() => setActivePanel("transactions")}
-        >
-          कारोबार
-        </button>
-        <button
-          className={`py-1 w-[25vh] border border-gray-400 rounded ${
-            activePanel === "income"
-              ? "bg-blue-500 text-white "
-              : "  bg-blue-100"
-          }`}
-          onClick={() => setActivePanel("income")}
-        >
-          नाफा
-        </button>
-        <button
-          className={`py-1  w-[25vh] border border-gray-400 rounded ${
-            activePanel === "expenses"
-              ? "bg-blue-500 text-white "
-              : "  bg-blue-100"
-          } `}
-          onClick={() => setActivePanel("expenses")}
-        >
-          नोक्सान
-        </button>
+      <div className="w-full sm:w-[45%] p-4 bg-blue-100 rounded-lg">
+        <h2 className="text-lg font-bold">कुल खर्च</h2>
+        <p className="text-xl">Rs.4000</p>
       </div>
+      {true ? (
+        <div className="w-full sm:w-[45%] p-4 bg-blue-100 rounded-lg">
+          <h2 className="text-lg font-bold">कुल नाफा</h2>
+          <p className="text-xl text-yellow-600">+ Rs.500</p>
+        </div>
+      ) : (
+        <div className="w-full sm:w-[45%] p-4 bg-blue-100 rounded-lg">
+          <h2 className="text-lg font-bold">कुल नोक्सान</h2>
+          <p className="text-xl text-orange-500">- Rs.300</p>
+        </div>
+      )}
+    </div>
 
-      <div className="mt-5">
-        {activePanel === "transactions" && (
-          !!plans &&
-            plans.length > 0 &&
-            plans.map((plan, index) => {
-              return (
-           
-                  <div
-                    key={index}
-                    className="flex w-full  items-center bg-blue-100 justify-between p-4 border border-gray-300 rounded-lg mt-2 cursor-pointer"
-                  >
-                    <Link className="w-full" to={`/business-diary/${plan._id}`} key={index}>
-                    <div className="flex w-full  items-center">
-                      <div className="mr-4">
-                        <FaCalendarAlt className="text-blue-500" />
-                      </div>
-                      <div>
-                        {isEditing === index ? (
-                          <input
-                            type="text"
-                            value={updatedPlan.plan}
-                            onChange={(e) =>
-                              setUpdatedPlan({
-                                ...updatedPlan,
-                                plan: e.target.value,
-                              })
-                            }
-                            className="w-full p-2 border border-gray-300 rounded mt-1"
-                          />
-                        ) : (
-                          <h3 className="text-lg font-medium">{plan.plan}</h3>
-                        )}
-                        <p className="text-sm text-gray-500">मिति: ०१/०१/२०२४</p>
-                      </div>
-                    </div>
-                    </Link>
-                  
-                    <div className="flex items-center space-x-2">
-                   Rs.1000
-                    </div>
+    <div className="flex w-full mt-16  space-x-0  sm:space-y-0  sm:space-x-3  ">
+      <button
+        className={` w-full sm:w-[25vh] border border-gray-400 rounded ${
+          activePanel === "transactions" ? "bg-blue-500 text-white" : "bg-blue-100"
+        }`}
+        onClick={() => setActivePanel("transactions")}
+      >
+        कारोबार
+      </button>
+      <button
+        className={`py-1 w-full sm:w-[25vh] border border-gray-400 rounded ${
+          activePanel === "income" ? "bg-blue-500 text-white" : "bg-blue-100"
+        }`}
+        onClick={() => setActivePanel("income")}
+      >
+        नाफा
+      </button>
+      <button
+        className={`py-1 w-full sm:w-[25vh] border border-gray-400 rounded ${
+          activePanel === "expenses" ? "bg-blue-500 text-white" : "bg-blue-100"
+        }`}
+        onClick={() => setActivePanel("expenses")}
+      >
+        नोक्सान
+      </button>
+    </div>
+
+    <div className="mt-5">
+      {activePanel === "transactions" && (
+        !!plans &&
+        plans.length > 0 &&
+        plans.map((plan, index) => {
+          return (
+            <div
+              key={index}
+              className="flex w-full items-center bg-blue-100 justify-between p-4 border border-gray-300 rounded-lg mt-2 cursor-pointer"
+            >
+              <Link className="w-full" to={`/business-diary/${plan._id}`} key={index}>
+                <div className="flex w-full items-center">
+                  <div className="mr-4">
+                    <FaCalendarAlt className="text-blue-500" />
                   </div>
-            
-              );
-            })
-        )}
-        {activePanel === "expenses" && (
-          <div>
-            <div className="flex items-center bg-blue-100  justify-between p-4 border border-gray-300 rounded-lg mt-5">
-              <div className="flex items-center">
-                <div className="mr-4">
-                  <FaCalendarAlt className="text-blue-500" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-medium">योजना नाम</h3>
-                  <p className="text-sm text-gray-500">मिति: ०१/०१/२०२४</p>
-                </div>
-              </div>
-              <div className="flex items-center space-x-2">$100</div>
-            </div>
-          </div>
-        )}
-        {activePanel === "income" && (
-          <div>
-            <div className="flex items-center bg-blue-100  justify-between p-4 border border-gray-300 rounded-lg mt-5">
-              <div className="flex items-center">
-                <div className="mr-4">
-                  <FaCalendarAlt className="text-blue-500" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-medium">योजना नाम</h3>
-                  <p className="text-sm text-gray-500">मिति: ०१/०१/२०२४</p>
-                </div>
-              </div>
-              <div className="flex items-center space-x-2">$100</div>
-            </div>
-          </div>
-        )}
-      </div>
-
-      <h1 className="mb-5 text-xl font-semibold mt-10">व्यवसाय चार्टहरू</h1>
-
-      <div className="flex mt-5 space-x-4 w-[80vw] h-[50vh]">
-        <div className="w-1/2">
-          <Pie data={pieData} />
-        </div>
-        <div className="w-1/2">
-          <Line data={lineData} />
-        </div>
-      </div>
-
-      <div className="flex items-center justify-between mt-10">
-        <h2 className="text-lg font-semibold">सबै श्रेणी</h2>
-        <button
-          onClick={() => setCreate(true)}
-          className="bg-blue-500 hover:bg-blue-400 text-white px-4 py-2 rounded"
-        >
-          नयाँ योजना थप्नुहोस्
-        </button>
-      </div>
-
-      <div>
-        {!!plans &&
-          plans.length > 0 &&
-          plans.map((plan, index) => {
-            return (
-         
-                <div
-                  key={index}
-                  className="flex w-full  items-center bg-blue-100 justify-between p-4 border border-gray-300 rounded-lg mt-2 cursor-pointer"
-                >
-                  <Link className="w-full" to={`/business-diary/${plan._id}`} key={index}>
-                  <div className="flex w-full  items-center">
-                    <div className="mr-4">
-                      <FaCalendarAlt className="text-blue-500" />
-                    </div>
-                    <div>
-                      {isEditing === index ? (
-                        <input
-                          type="text"
-                          value={updatedPlan.plan}
-                          onChange={(e) =>
-                            setUpdatedPlan({
-                              ...updatedPlan,
-                              plan: e.target.value,
-                            })
-                          }
-                          className="w-full p-2 border border-gray-300 rounded mt-1"
-                        />
-                      ) : (
-                        <h3 className="text-lg font-medium">{plan.plan}</h3>
-                      )}
-                      <p className="text-sm text-gray-500">मिति: ०१/०१/२०२४</p>
-                    </div>
-                  </div>
-                  </Link>
-                
-                  <div className="flex items-center space-x-2">
+                  <div>
                     {isEditing === index ? (
-                      <button
-                        onClick={() => {
-                          // Handle the update logic here
-                          setIsEditing(null);
-                        }}
-                        className="bg-blue-500 hover:bg-blue-400 text-white px-4 py-2 rounded"
-                      >
-                        अपडेट गर्नुहोस्
-                      </button>
+                      <input
+                        type="text"
+                        value={updatedPlan.plan}
+                        onChange={(e) =>
+                          setUpdatedPlan({
+                            ...updatedPlan,
+                            plan: e.target.value,
+                          })
+                        }
+                        className="w-full p-2 border border-gray-300 rounded mt-1"
+                      />
                     ) : (
-                      <>
-                        <FaEdit
-                          className="text-blue-500 cursor-pointer"
-                          onClick={() => {
-                            setIsEditing(index);
-                            setUpdatedPlan(plan);
-                          }}
-                        />
-                        <div onClick={() => handleDeletePlan(plan._id)}>
-                          <FaTrash className="text-red-500 cursor-pointer" />
-                        </div>
-                      </>
+                      <h3 className="text-lg font-medium">{plan.plan}</h3>
                     )}
+                    <p className="text-sm text-gray-500">मिति: ०१/०१/२०२४</p>
                   </div>
                 </div>
-          
-            );
-          })}
-      </div>
-
-      {create && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-1/3">
-            <h2 className="text-xl font-semibold mb-4">नयाँ योजना थप्नुहोस्</h2>
-            <div className="mb-4">
-              <label className="block text-gray-700">योजना नाम</label>
-              <input
-                type="text"
-                value={newPlan.name}
-                onChange={(e) =>
-                  setNewPlan({ ...newPlan, plan: e.target.value })
-                }
-                className="w-full p-2 border border-gray-300 rounded mt-1"
-              />
+              </Link>
+              <div className="flex items-center space-x-2">
+                Rs.1000
+              </div>
             </div>
-
-            <div className="flex justify-end space-x-4">
-              <button
-                onClick={() => setCreate(false)}
-                className="bg-red-500 hover:bg-red-400 text-white px-4 py-2 rounded"
-              >
-                रद्द गर्नुहोस्
-              </button>
-              <button
-                onClick={handleBusinessPlan}
-                className="bg-blue-500 hover:bg-blue-400 text-white px-4 py-2 rounded"
-              >
-                योजना थप्नुहोस्
-              </button>
+          );
+        })
+      )}
+      {activePanel === "expenses" && (
+        <div>
+          <div className="flex items-center bg-blue-100 justify-between p-4 border border-gray-300 rounded-lg mt-5">
+            <div className="flex items-center">
+              <div className="mr-4">
+                <FaCalendarAlt className="text-blue-500" />
+              </div>
+              <div>
+                <h3 className="text-lg font-medium">योजना नाम</h3>
+                <p className="text-sm text-gray-500">मिति: ०१/०१/२०२४</p>
+              </div>
             </div>
+            <div className="flex items-center space-x-2">$100</div>
+          </div>
+        </div>
+      )}
+      {activePanel === "income" && (
+        <div>
+          <div className="flex items-center bg-blue-100 justify-between p-4 border border-gray-300 rounded-lg mt-5">
+            <div className="flex items-center">
+              <div className="mr-4">
+                <FaCalendarAlt className="text-blue-500" />
+              </div>
+              <div>
+                <h3 className="text-lg font-medium">योजना नाम</h3>
+                <p className="text-sm text-gray-500">मिति: ०१/०१/२०२४</p>
+              </div>
+            </div>
+            <div className="flex items-center space-x-2">$100</div>
           </div>
         </div>
       )}
     </div>
+
+    <h1 className="sm:mb-5 mb-[8rem] text-xl font-semibold mt-10">व्यवसाय चार्टहरू</h1>
+
+    <div className="flex flex-col md:flex-row mt-5 space-x-0 md:space-x-4 w-full h-[50vh]">
+      <div className="w-full md:w-1/2">
+        <Pie data={pieData} />
+      </div>
+      <div className="w-full md:w-1/2">
+        <Line data={lineData} />
+      </div>
+    </div>
+
+    <div className="flex items-center justify-between mt-[5rem] sm:mt-10">
+      <h2 className="text-lg font-semibold">सबै श्रेणी</h2>
+      <button
+        onClick={() => setCreate(true)}
+        className="bg-blue-500 hover:bg-blue-400 text-white px-4 py-2 rounded"
+      >
+        नयाँ योजना थप्नुहोस्
+      </button>
+    </div>
+
+    <div>
+      {!!plans &&
+        plans.length > 0 &&
+        plans.map((plan, index) => {
+          return (
+            <div
+              key={index}
+              className="flex w-full items-center bg-blue-100 justify-between p-4 border border-gray-300 rounded-lg mt-2 cursor-pointer"
+            >
+              <Link className="w-full" to={`/business-diary/${plan._id}`} key={index}>
+                <div className="flex w-full items-center">
+                  <div className="mr-4">
+                    <FaCalendarAlt className="text-blue-500" />
+                  </div>
+                  <div>
+                    {isEditing === index ? (
+                      <input
+                        type="text"
+                        value={updatedPlan.plan}
+                        onChange={(e) =>
+                          setUpdatedPlan({
+                            ...updatedPlan,
+                            plan: e.target.value,
+                          })
+                        }
+                        className="w-full p-2 border border-gray-300 rounded mt-1"
+                      />
+                    ) : (
+                      <h3 className="text-lg font-medium">{plan.plan}</h3>
+                    )}
+                    <p className="text-sm text-gray-500">मिति: ०१/०१/२०२४</p>
+                  </div>
+                </div>
+              </Link>
+              <div className="flex items-center space-x-2">
+                {isEditing === index ? (
+                  <button
+                    onClick={() => {
+                      // Handle the update logic here
+                      setIsEditing(null);
+                    }}
+                    className="bg-blue-500 hover:bg-blue-400 text-white px-4 py-2 rounded"
+                  >
+                    अपडेट गर्नुहोस्
+                  </button>
+                ) : (
+                  <>
+                    <FaEdit
+                      className="text-blue-500 cursor-pointer"
+                      onClick={() => {
+                        setIsEditing(index);
+                        setUpdatedPlan(plan);
+                      }}
+                    />
+                    <div onClick={() => handleDeletePlan(plan._id)}>
+                      <FaTrash className="text-red-500 cursor-pointer" />
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+          );
+        })}
+    </div>
+
+    {create && (
+      <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
+        <div className="bg-white p-6 rounded-lg shadow-lg w-5/6 md:w-1/3">
+          <h2 className="text-xl font-semibold mb-4">नयाँ योजना थप्नुहोस्</h2>
+          <div className="mb-4">
+            <label className="block text-gray-700">योजना नाम</label>
+            <input
+              type="text"
+              value={newPlan.name}
+              onChange={(e) =>
+                setNewPlan({ ...newPlan, plan: e.target.value })
+              }
+              className="w-full p-2 border border-gray-300 rounded mt-1"
+            />
+          </div>
+
+          <div className="flex justify-end space-x-4">
+            <button
+              onClick={() => setCreate(false)}
+              className="bg-red-500 hover:bg-red-400 text-white px-4 py-2 rounded"
+            >
+              रद्द गर्नुहोस्
+            </button>
+            <button
+              onClick={handleBusinessPlan}
+              className="bg-blue-500 hover:bg-blue-400 text-white px-4 py-2 rounded"
+            >
+              योजना थप्नुहोस्
+            </button>
+          </div>
+        </div>
+      </div>
+    )}
+  </div>
+</div>
+
   );
 };
 
