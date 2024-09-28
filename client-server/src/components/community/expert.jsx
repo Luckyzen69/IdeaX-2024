@@ -38,7 +38,7 @@ export default function Expert({ handleSubmit, formData, setFormData }) {
       reviews: "3",
     },
     {
-      id: 4,
+      id: 4,  
       img: User4,
       name: "Binit Khadka",
       title: "Agro Consultant",
@@ -93,9 +93,9 @@ export default function Expert({ handleSubmit, formData, setFormData }) {
               <div className="text-center mb-4 text-sm">({reviews} reviews)</div>
               <button
                 onClick={toggleModal}
-                className="w-2/3 md:w-1/2 mx-auto block rounded-full bg-gray-900 hover:shadow-lg text-white px-4 py-2"
+                className="mb-4  w-2/3 md:w-1/2 mx-auto block rounded-full bg-gray-900 hover:shadow-lg text-white px-4 py-2"
               >
-                Send Message
+                सन्देश पठाउनुहोस्
               </button>
             </div>
           );
@@ -153,14 +153,14 @@ export default function Expert({ handleSubmit, formData, setFormData }) {
                   type="submit"
                   className="text-white bg-accent hover:bg-fourth rounded-lg px-4 py-2"
                 >
-                  Submit
+                  पेश गर्नुहोस्
                 </button>
                 <button
                   type="button"
                   onClick={toggleModal}
                   className="text-gray-900 bg-white border border-gray-200 hover:bg-red-600 hover:text-white rounded-lg px-4 py-2"
                 >
-                  Cancel
+                  रद्द गर्नुहोस्
                 </button>
               </div>
             </form>

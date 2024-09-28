@@ -55,7 +55,7 @@ export default function Faq() {
     class="relative w-full bg-white px-6 pt-10   pb-8 mt-8 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-2xl sm:rounded-lg sm:px-10">
           <div class="flex flex-col items-center">
             <h2 class="mt-5 text-center text-3xl font-bold tracking-tight md:text-5xl">FAQ</h2>
-            <p class="mt-3 text-lg text-neutral-500 md:text-xl">Frequenty asked questions </p>
+            <p class="mt-3 text-lg text-neutral-500 md:text-xl">बारम्बार सोधिने प्रश्नहरू</p>
         </div>
     <div class="mx-auto ">
         {

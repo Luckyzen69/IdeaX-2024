@@ -13,6 +13,8 @@ import Region from "./components/regional-crops/region";
 import CropData from "./components/regional-crops/cropsData";
 import { getCurrentUser } from "./appwrite/session";
 import Community from "./components/community/community";
+import Market from "./components/market/market";
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
 
@@ -41,6 +43,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/user" element={<User />} />
           <Route path="/community" element={<Community />} />
+          <Route path="/market" element={<Market />} />
           <Route path="/regional-crops" element={<Region />} />
           <Route path="/regional-crops/Tomato" element={<CropData />} />
           <Route path="/courses/player/:id" element={<Player />} />
