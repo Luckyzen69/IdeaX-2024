@@ -232,7 +232,7 @@ const Category = () => {
                             <h3 className="text-lg font-medium">{plan.task}</h3>
                           )}
                           <p className="text-sm text-gray-500">
-                            मिति: {Date(plan.date)}
+                            मिति: {plan.date}
                           </p>
                         </div>
                       </div>
