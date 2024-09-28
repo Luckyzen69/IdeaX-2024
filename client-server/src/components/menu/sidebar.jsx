@@ -35,7 +35,7 @@ export default function Sidebar() {
           </div>
           <ul className='space-y-4 font-bold'>
             <li><Link to='/courses' className='flex ml-2 text-sm text-primary hover:text-accent items-center'><FaBookOpen className='mr-2' />Course</Link></li>
-            <li><Link to='/bussinessplan' className='flex ml-2 text-sm text-primary hover:text-accent items-center'><FaBook className='mr-2' />Business Diary</Link></li>
+            <li><Link to='/business-diary' className='flex ml-2 text-sm text-primary hover:text-accent items-center'><FaBook className='mr-2' />Business Diary</Link></li>
             <li><Link to='/regional-crops' className='flex ml-2 text-sm text-primary hover:text-accent items-center'><VscGraph className='mr-2' />Regional Crops</Link></li>
             <li><Link to='/market' className='flex ml-2 text-sm text-primary hover:text-accent items-center'><BsGraphUpArrow className='mr-2' />Market Trend</Link></li>
             <li><Link to='/community' className='flex ml-2 text-sm text-primary hover:text-accent items-center'><FaUsers className='mr-2' />Expert Advice</Link></li>

@@ -15,6 +15,8 @@ import { getCurrentUser } from "./appwrite/session";
 import Community from "./components/community/community";
 import Market from "./components/market/market";
 
+import Diary from "./components/businessDiary/diary";
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
 
@@ -45,6 +47,7 @@ function App() {
           <Route path="/community" element={<Community />} />
           <Route path="/market" element={<Market />} />
           <Route path="/regional-crops" element={<Region />} />
+          <Route path="/business-diary" element={<Diary />} />
           <Route path="/regional-crops/Tomato" element={<CropData />} />
           <Route path="/courses/player/:id" element={<Player />} />
         </Routes>
