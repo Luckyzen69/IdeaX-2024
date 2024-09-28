@@ -12,4 +12,19 @@ const createUser = async (req, res) => {
     }
 };
 
-module.exports = { createUser };
+
+const getUserDetails = async (req, res) => {
+    try {
+        const email = req.params.email;
+        console.log(email)
+        const user = await User.findOne({email:email});
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        res.status(200).json({ user });
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching user details', error: error.message });
+    }
+};
+
+module.exports = { createUser,getUserDetails };
