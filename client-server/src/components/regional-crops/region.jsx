@@ -76,7 +76,7 @@ function LocationMarker({ setMapCenter, setMarkerDetails }) {
 }
 
 export default function Region({ onFetchCrops }) {
-  const [mapCenter, setMapCenter] = useState([27.7172, 85.324]); // Default center: Kathmandu
+  const [mapCenter, setMapCenter] = useState([27.7172, 85.324]); 
   const [userLocation, setUserLocation] = useState({
     latitude: null,
     longitude: null,
@@ -137,12 +137,11 @@ export default function Region({ onFetchCrops }) {
           <p>कुनै स्थान सुरक्षित गरिएको छैन।</p>
         )}
       </div>
-      <button
+      <Link to='/regional-crops/lon=27.6938&lat=85.3239'
         className="text-center bg-blue-500 text-white p-2 rounded"
-        onClick={handleFetchCrops}
       >
         यस स्थानको बाली हेर्नुहोस्
-      </button>
+      </Link>
 
       {/* OpenStreetMap Section */}
       <div className="m-2 p-2 border rounded-lg">

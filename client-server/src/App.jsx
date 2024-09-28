@@ -9,17 +9,12 @@ import Player from "./components/courses/player";
 import Login from "./components/auth/login";
 import Signup from "./components/auth/signup";
 import User from "./components/user/user";
-import Region from "./components/regional-crops/region";
 import CropData from "./components/regional-crops/cropsData";
 import { getCurrentUser } from "./appwrite/session";
 import Community from "./components/community/community";
 import Market from "./components/market/market";
-
 import Category from "./components/businessDiary/category/category";
-
-
 import Crops from "./components/regional-crops/crops";
-
 import Diary from "./components/businessDiary/diary";
 import Parent from "./components/regional-crops/PARENT.JSX";
 import Diseases from "./components/courses/diseases";
@@ -56,9 +51,9 @@ function App() {
           <Route path="/market" element={<Market />} />
           <Route path="/courses/player/:id/diseases" element={<Diseases />} />
           <Route path="/regional-crops" element={<Parent />} />
-          <Route path="/regional-crops/crops" element={<Crops />} />
+          <Route path="/regional-crops/lon=27.6938&lat=85.3239" element={<Crops />} />
           <Route path="/business-diary" element={<Diary />} />
-          <Route path="/regional-crops/टमाटर" element={<CropData />} />
+          <Route path="/regional-crops/tomatoguide" element={<CropData />} />
           <Route path="/courses/player/:id" element={<Player />} />
           <Route path="/business-diary/:id" element={<Category />} />
         </Routes>

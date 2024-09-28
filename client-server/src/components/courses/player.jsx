@@ -4,6 +4,7 @@ import Datas from './datas';
 import Part from './part';
 import Review from './review';
 import ReviewForm from './writereview';
+
 export default function Player() {
   const { id } = useParams();
   const [features,setFeatures] =useState()
@@ -31,13 +32,17 @@ export default function Player() {
         ))}
         </ul>
         </div>
+          <Link to={`/regional-crops/tomatoguide`} className='border border-accent p-2 rounded-xl hover:bg-accent hover:text-white '>
+          कसरी रोप्ने
+          </Link>
           </div>
         </div>
         <Part/>
-        <div className='flex items-center justify-center m-5'>
+        <div className='flex items-center justify-center m-5 space-x-4  '>
           <Link to={`/courses/player/${id}/diseases`} className='border border-accent p-2 rounded-xl hover:bg-accent hover:text-white '>
           यसको रोग र कारण पत्ता लगाउनुहोस्।
           </Link>
+         
         </div>
           <Review/>
           <ReviewForm/>

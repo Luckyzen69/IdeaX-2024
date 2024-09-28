@@ -11,7 +11,7 @@ export default function Header() {
         </Link>
 
         <ul className='flex flex-col sm:flex-row sm:space-x-10 capitalize cursor-pointer fixed right-10'>
-            <Link to='/login'><li className='m-3 hover:text-accent'>login </li></Link>
+            <Link to='/login'><li className='m-3 hover:text-accent text-white'>login </li></Link>
             <Link to='/signup'><li className='border rounded-md m-1  px-4 py-2 bg-accent hover:bg-fourth text-white'>register </li></Link>
         </ul>
     </div>

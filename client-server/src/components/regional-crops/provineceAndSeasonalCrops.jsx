@@ -1,6 +1,31 @@
 let Datas = {
   "provinces": [
     {
+      "name": "बागमती प्रदेश",
+      "seasonalCrops": [
+        {
+          "season": "वसन्त (चैत - जेठ)",
+          "image": "../../assets/crops-image/Barley.jpg",
+          "crops": [ "काउली", "सुन्तला", "जौ","टमाटर"]
+        },
+        {
+          "season": "गर्मी (असार - भदौ)",
+          "image": "../../assets/crops-image/Barley.jpg",
+          "crops": ["धान", "मकै", "सुन्तला"]
+        },
+        {
+          "season": "शरद (आश्विन - कार्तिक)",
+          "image": "../../assets/crops-image/Barley.jpg",
+          "crops": ["धान", "तरकारी", "जौ"]
+        },
+        {
+          "season": "हिउँद (मंसिर - फाल्गुन)",
+          "image": "../../assets/crops-image/Barley.jpg",
+          "crops": ["गहुँ", "जौ", "सुन्तला", "आलु"]
+        }
+      ]
+    },
+    {
       "name": "कोशी प्रदेश",
       "seasonalCrops": [
         {
@@ -46,31 +71,8 @@ let Datas = {
         }
       ]
     },
-    {
-      "name": "बागमती प्रदेश",
-      "seasonalCrops": [
-        {
-          "season": "वसन्त (चैत - जेठ)",
-          "image": "../../assets/crops-image/Barley.jpg",
-          "crops": ["टमाटर", "काउली", "सुन्तला", "जौ"]
-        },
-        {
-          "season": "गर्मी (असार - भदौ)",
-          "image": "../../assets/crops-image/Barley.jpg",
-          "crops": ["धान", "मकै", "सुन्तला"]
-        },
-        {
-          "season": "शरद (आश्विन - कार्तिक)",
-          "image": "../../assets/crops-image/Barley.jpg",
-          "crops": ["धान", "तरकारी", "जौ"]
-        },
-        {
-          "season": "हिउँद (मंसिर - फाल्गुन)",
-          "image": "../../assets/crops-image/Barley.jpg",
-          "crops": ["गहुँ", "जौ", "सुन्तला", "आलु"]
-        }
-      ]
-    },
+    
+      
     {
       "name": "गण्डकी प्रदेश",
       "seasonalCrops": [
