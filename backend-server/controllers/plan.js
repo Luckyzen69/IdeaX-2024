@@ -3,14 +3,16 @@ const Plan = require("../models/plan");
 const createPlan = async (req, res) => {
   try {
 
-    const { plan, authorId } = req.body;
+    const { plan, email } = req.body;
+    console.log(req.body)
     const newPlan = new Plan({
       plan,
-      authorId,
+      email,
     });
     const savedPlan = await newPlan.save();
-    res.status(201).json(savedPlan);
+  return  res.status(201).json(savedPlan);
   } catch (error) {
+    console.log(error)
     res.status(500).json({ message: "Error creating plan", error });
   }
 };
@@ -19,10 +21,10 @@ const createPlan = async (req, res) => {
 const updatePlanById = async (req, res) => {
     try {
       const { id } = req.params;
-      const { plan, authorId } = req.body;
+      const { plan, email } = req.body;
       const updatedPlan = await Plan.findByIdAndUpdate(
         id,
-        { plan, authorId },
+        { plan, email },
         { new: true }
       );
       if (!updatedPlan) {
@@ -36,9 +38,10 @@ const updatePlanById = async (req, res) => {
   
   const readPlansByAuthorId = async (req, res) => {
     try {
-      const { authorId } = req.params;
-      console.log('hello')
-      const plans = await Plan.find({ authorId });
+      console.log(req.params)
+      const { email } =await req.params;
+      console.log(email)
+      const plans = await Plan.find({ email:email });
       console.log(plans)
       if (plans.length === 0) {
         return res

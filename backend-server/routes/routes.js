@@ -20,7 +20,7 @@ router.post("/signup", createUser);
 router.post("/createPlan", createPlan);
 router.put("/updatePlan/:id", updatePlanById);
 router.delete("/deletePlan/:id", deletePlanById);
-router.get("/readPlans/:authorId", readPlansByAuthorId);
+router.get("/readPlans/:email", readPlansByAuthorId);
 router.post("/createDiaryEntry", createDiaryEntry);
 router.put("/updateDiaryEntry/:id", updateDiaryEntryById);
 router.delete("/deleteDiaryEntry/:id", deleteDiaryEntryById);
