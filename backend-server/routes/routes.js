@@ -16,7 +16,9 @@ const {
 } = require("../controllers/task");
 
 const router = express.Router();
-
+router.get("/", (req, res) => {
+  res.send("Welcome to the backend server");
+});
 router.post("/signup", createUser);
 router.post("/createPlan", createPlan);
 router.put("/updatePlan/:id", updatePlanById);

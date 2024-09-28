@@ -30,8 +30,8 @@ export default function User() {
     fetchUserDetails();
   }, []);
 
-  if (!userDetails) {
-    return <div>Loading...</div>;
+  if (!userDetails.user) {
+    return <div className="w-full text-[5em] h-screen flex justify-center items-center">Loading...</div>;
   }
 
   let datas = [
@@ -61,10 +61,9 @@ export default function User() {
           />
           <div>
             <h3 className="font-bold text-xl">
-              {" "}
-              {userDetails.user.firstName} {userDetails.user.lastName}
+              {userDetails.user?.firstName} {userDetails.user?.lastName}
             </h3>
-            <p>{userDetails.user.email} </p>
+            <p>{userDetails.user?.email}</p>
           </div>
           <hr />
           <div>
