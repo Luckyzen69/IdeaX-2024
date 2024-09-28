@@ -16,8 +16,9 @@ export const createItem = async (extraApi, item) => {
   }
 };
 
-export const getItems = async (extraApi ) => {
+export const getItems = async (extraApi) => {
   try {
+    
     const response = await axios.get(`${base_url}${extraApi}`, headers);
     return response.data;
   } catch (error) {
