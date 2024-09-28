@@ -11,12 +11,11 @@ import Signup from "./components/auth/signup";
 import User from "./components/user/user";
 import Region from "./components/regional-crops/region";
 import CropData from "./components/regional-crops/cropsData";
-import { getCurrentUser } from "./appwrite/session";
+import { getCurrentUser, logout } from "./appwrite/session";
 import Community from "./components/community/community";
 import Market from "./components/market/market";
 
 import Category from "./components/businessDiary/category/category";
-
 
 import Crops from "./components/regional-crops/crops";
 
@@ -25,16 +24,15 @@ import Parent from "./components/regional-crops/PARENT.JSX";
 import Diseases from "./components/courses/diseases";
 import ScrollToTop from "./components/scrolltoTop";
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState();
 
   useEffect(() => {
+
     const checkUser = async () => {
       const data = await getCurrentUser();
       if (data.$id) {
-        console.log("User is logged in");
         setIsLoggedIn(true);
       } else {
-        console.log("User is not logged in");
         setIsLoggedIn(false);
       }
     };
@@ -43,24 +41,53 @@ function App() {
 
   return (
     <>
-      <div className={isLoggedIn ? 'sm:pl-52' : 'flex flex-col justify-between'}>
+      <div
+        className={isLoggedIn ? "sm:pl-52" : "flex flex-col justify-between"}
+      >
         {isLoggedIn ? <Sidebar /> : <Header />}
         <ScrollToTop />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={isLoggedIn ? <Course /> : <Home />} />
           <Route path="/courses" element={<Course />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/user" element={<User />} />
-          <Route path="/community" element={<Community />} />
-          <Route path="/market" element={<Market />} />
-          <Route path="/courses/player/:id/diseases" element={<Diseases />} />
-          <Route path="/regional-crops" element={<Parent />} />
-          <Route path="/regional-crops/crops" element={<Crops />} />
-          <Route path="/business-diary" element={<Diary />} />
-          <Route path="/regional-crops/टमाटर" element={<CropData />} />
-          <Route path="/courses/player/:id" element={<Player />} />
-          <Route path="/business-diary/:id" element={<Category />} />
+          <Route path="/login" element={isLoggedIn ? <Course /> : <Login />} />
+          <Route
+            path="/signup"
+            element={isLoggedIn ? <Course /> : <Signup />}
+          />
+          <Route path="/user" element={isLoggedIn ? <User /> : <Home />} />
+          <Route
+            path="/community"
+            element={isLoggedIn ? <Community /> : <Home />}
+          />
+          <Route path="/market" element={isLoggedIn ? <Market /> : <Home />} />
+          <Route
+            path="/courses/player/:id/diseases"
+            element={isLoggedIn ? <Diseases /> : <Home />}
+          />
+          <Route
+            path="/regional-crops"
+            element={isLoggedIn ? <Parent /> : <Home />}
+          />
+          <Route
+            path="/regional-crops/crops"
+            element={isLoggedIn ? <Crops /> : <Home />}
+          />
+          <Route
+            path="/business-diary"
+            element={isLoggedIn ? <Diary /> : <Home />}
+          />
+          <Route
+            path="/regional-crops/टमाटर"
+            element={isLoggedIn ? <CropData /> : <Home />}
+          />
+          <Route
+            path="/courses/player/:id"
+            element={isLoggedIn ? <Player /> : <Home />}
+          />
+          <Route
+            path="/business-diary/:id"
+            element={isLoggedIn ? <Category /> : <Home />}
+          />
         </Routes>
       </div>
     </>

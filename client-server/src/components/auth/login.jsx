@@ -3,20 +3,27 @@ import Thumbnail from "../../assets/3.jpg";
 import { CiMail, CiLock } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { signin } from "../../appwrite/session";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-  const [email, setemail] = useState();
-  const [password, setpassword] = useState();
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    signin(email, password)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    console.log("Attempting to sign in with email:", email);
+    try{
+      await signin(email, password)
+      await navigate('/courses')
+
+    }
+    catch(err){
+      console.error('wrong login password')
+console.log("error occur while login ")
+    }
+
+    
   };
 
   return (
@@ -27,7 +34,7 @@ export default function Login() {
       >
         <div className="bg-purewhite border border-accent rounded-lg m-2 p-4">
           <h2 className="text-center font-bold text-xl">Login</h2>
-          <form onSubmit={(e)=>handleSubmit(e)} className="m-2 p-2 flex flex-col space-y-5 sm:w-96">
+          <form onSubmit={handleSubmit} className="m-2 p-2 flex flex-col space-y-5 sm:w-96">
             <label htmlFor="email" className="font-bold">
               Email:
             </label>
@@ -37,10 +44,10 @@ export default function Login() {
                 value={email}
                 onChange={(e) => setemail(e.target.value)}
                 type="email"
-                name="name"
-                id="name"
+                name="email"
+                id="email"
                 className="border sm:w-96 p-2 pl-10"
-                placeholder="Enter you email..."
+                placeholder="Enter your email..."
                 required
               />
             </div>
@@ -51,13 +58,13 @@ export default function Login() {
               <CiLock className="absolute text-2xl block left-2 top-2 " />
               <input
                 type="password"
-                onChange={(e) => {
-                  setpassword(e.target.value);
-                }}
+                value={password}
+                onChange={(e) => setpassword(e.target.value)}
                 name="password"
                 id="password"
                 className="border sm:w-96 p-2 pl-10"
-                placeholder="Enter Your Password..."
+                placeholder="Enter your password..."
+                required
               />
             </div>
             <button

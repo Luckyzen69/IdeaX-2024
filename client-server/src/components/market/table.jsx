@@ -5,55 +5,10 @@ import Chilli from '../../assets/vegitables/chilli.svg';
 import Fish from '../../assets/vegitables/fish.svg';
 import Sugar from '../../assets/vegitables/sugar.svg';
 import Chicken from '../../assets/vegitables/chicken.svg';
+import { data } from './kalimatidata';
 
 export default function Table() {
-    let datas = [
-        {
-            id: 1,
-            image: Potato,
-            name: 'Potatoes',
-            price: 'Rs80',
-            maxPrice: 'Rs100',
-            minPrice: 'Rs60',
-            change: <FaArrowDownLong className="text-red-600" />,
-        },
-        {
-            id: 2,
-            image: Chilli,
-            name: 'Chilli',
-            price: 'Rs80',
-            maxPrice: 'Rs100',
-            minPrice: 'Rs60',
-            change: <FaArrowDownLong className="text-red-600" />,
-        },
-        {
-            id: 3,
-            image: Fish,
-            name: 'Fish',
-            price: 'Rs80',
-            maxPrice: 'Rs100',
-            minPrice: 'Rs60',
-            change: <FaArrowUpLong className="text-accent" />,
-        },
-        {
-            id: 4,
-            image: Sugar,
-            name: 'Sugar',
-            price: 'Rs80',
-            maxPrice: 'Rs100',
-            minPrice: 'Rs60',
-            change: <FaArrowUpLong className="text-accent" />,
-        },
-        {
-            id: 5,
-            image: Chicken,
-            name: 'Chicken',
-            price: 'Rs80',
-            maxPrice: 'Rs100',
-            minPrice: 'Rs60',
-            change: <FaArrowDownLong className="text-red-600" />,
-        },
-    ];
+  
 
     return (
         <div className="m-4">
@@ -63,35 +18,32 @@ export default function Table() {
                     <thead>
                         <tr className="bg-accent text-white m-2 p-2">
                             <th className="p-4">Images</th>
-                            <th className="p-4 border">Commodity</th>
-                            <th className="p-4">PRICE (per KG)</th>
-                            <th className="p-4 border">Max price <br />(over one month)</th>
-                            <th className="p-4">Min price <br />(over one month)</th>
-                            <th className="p-4 border">Change <br />(over one month)</th>
+                            <th className="p-4 border">कृषि उपज</th>
+                            <th className="p-4">ईकाइ</th>
+                            <th className="p-4 border">न्यूनतम</th>
+                            <th className="p-4">अधिकतम</th>
+                            <th className="p-4 border">औसत</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {datas.map((data) => {
-                            let { id, image, name, price, maxPrice, minPrice, change } = data;
-                            const bgColor = id % 2 === 0 ? '#FFF0AF' : '#CCF7AE';
+                        {data.map((data,index) => {
                             return (
                                 <tr
-                                    key={id}
+                                    key={index}
                                     className="text-center"
-                                    style={{ backgroundColor: bgColor }}
+                                    
                                 >
                                     <td className="p-4">
                                         <img
-                                            src={image}
-                                            alt={name}
+                                            src={``}
                                             className="aspect-square w-16 sm:w-24"
                                         />
-                                    </td>
-                                    <td className="p-4 font-bold">{name}</td>
-                                    <td className="p-4">{price}</td>
-                                    <td className="p-4">{maxPrice}</td>
-                                    <td className="p-4">{minPrice}</td>
-                                    <td className="p-8 sm:p-16">{change}</td>
+                                     </td>
+                                    <td className="p-4 font-bold">{ data['कृषि उपज'] }</td>
+                                    <td className="p-4">{data.ईकाइ }</td>
+                                    <td className="p-4">{data.न्यूनतम}</td>
+                                    <td className="p-4">{data.अधिकतम}</td>
+                                    <td className="p-8 sm:p-16">{data.औसत}</td>
                                 </tr>
                             );
                         })}

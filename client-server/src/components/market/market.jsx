@@ -8,7 +8,7 @@ export default function Market() {
         <div className='m-2 space-x-2 p-2 sm:ml-52'>
             <label htmlFor="location">Location</label>
             <select name="location" id="location">
-                <option value="kathmandu">Kathmandu</option>
+                <option value="kathmandu">kalimati</option>
                 <option value="kathmandu">Bhaktapur</option>
                 <option value="kathmandu">Lalitpur</option>
                 <option value="kathmandu">Banepa</option>

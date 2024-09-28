@@ -36,23 +36,28 @@ const Category = () => {
   const [isEditing, setIsEditing] = useState(null);
   const [updatedPlan, setUpdatedPlan] = useState({ plan: "" });
 
-
-const calculateTotals = () => {
+  const calculateTotals = () => {
     if (!diaries) return { totalRevenue: 0, totalCost: 0 };
-    const totalRevenue = diaries.reduce((acc, diary) => acc + Number(diary.revenue), 0);
-    const totalCost = diaries.reduce((acc, diary) => acc + Number(diary.cost), 0);
+    const totalRevenue = diaries.reduce(
+      (acc, diary) => acc + Number(diary.revenue),
+      0
+    );
+    const totalCost = diaries.reduce(
+      (acc, diary) => acc + Number(diary.cost),
+      0
+    );
 
     return { totalRevenue, totalCost };
-};
+  };
 
-useEffect(() => {
+  useEffect(() => {
     const totals = calculateTotals();
     setplandata((prevData) => ({
-        ...prevData,
-        totalRevenue: totals.totalRevenue,
-        totalCost: totals.totalCost,
+      ...prevData,
+      totalRevenue: totals.totalRevenue,
+      totalCost: totals.totalCost,
     }));
-}, [diaries]);
+  }, [diaries]);
 
   console.log(diaries, plandata);
   const fetchData = async () => {
@@ -100,7 +105,11 @@ useEffect(() => {
     datasets: [
       {
         label: "Rs.",
-        data: [plandata.totalRevenue, plandata.totalCost, plandata.totalRevenue - plandata.totalCost],
+        data: [
+          plandata.totalRevenue,
+          plandata.totalCost,
+          plandata.totalRevenue - plandata.totalCost,
+        ],
         backgroundColor: ["green", "red", "yellow"],
         borderColor: [
           "rgba(75, 192, 192, 1)",
@@ -142,6 +151,18 @@ useEffect(() => {
           <h2 className="text-lg  font-bold">कुल खर्च</h2>
           <p className="text-xl">Rs. {plandata.totalCost}</p>
         </div>
+
+        {plandata.totalRevenue > plandata.totalCost ? (
+          <div className=" w-[45%]   p-4   bg-blue-100 rounded-lg">
+            <h2 className="text-lg  font-bold">कुल  नाफा</h2>
+            <p className="text-xl text-yellow-400 ">+ Rs. {plandata.totalRevenue - plandata.totalCost}</p>
+          </div>
+        ) : (
+          <div className=" w-[45%]  p-4   bg-blue-100 rounded-lg">
+            <h2 className="text-lg  font-bold">कुल नोक्सान</h2>
+            <p className="text-xl text-orange-500 ">- Rs. {plandata.totalCost - plandata.totalRevenue}</p>
+          </div>
+        )}
       </div>
 
       <div className="flex w-[80vh] mt-16 justify-between ">
@@ -241,60 +262,62 @@ useEffect(() => {
           <div>
             {" "}
             <div>
-            {!!diaries &&
+              {!!diaries &&
                 diaries.length > 0 &&
                 diaries.map((plan, index) => {
                   return (
                     <>
-                   {plan.revenue > plan.cost && 
-                    <div
-                      key={index}
-                      className="flex w-full  items-center bg-blue-100 justify-between p-4 border border-gray-300 rounded-lg mt-2 cursor-pointer"
-                    >
-                      <div className="flex w-full  items-center">
-                        <div className="mr-4">
-                          <FaCalendarAlt className="text-blue-500" />
-                        </div>
-                        <div>
-                          {isEditing === index ? (
-                            <input
-                              type="text"
-                              value={updatedPlan.plan}
-                              onChange={(e) =>
-                                setUpdatedPlan({
-                                  ...updatedPlan,
-                                  plan: e.target.value,
-                                })
-                              }
-                              className="w-full p-2 border border-gray-300 rounded mt-1"
-                            />
-                          ) : (
-                            <h3 className="text-lg font-medium">{plan.task}</h3>
-                          )}
-                          <p className="text-sm text-gray-500">
-                            मिति: {Date(plan.date)}
-                          </p>
-                        </div>
-                      </div>
+                      {plan.revenue < plan.cost && (
+                        <div
+                          key={index}
+                          className="flex w-full  items-center bg-blue-100 justify-between p-4 border border-gray-300 rounded-lg mt-2 cursor-pointer"
+                        >
+                          <div className="flex w-full  items-center">
+                            <div className="mr-4">
+                              <FaCalendarAlt className="text-blue-500" />
+                            </div>
+                            <div>
+                              {isEditing === index ? (
+                                <input
+                                  type="text"
+                                  value={updatedPlan.plan}
+                                  onChange={(e) =>
+                                    setUpdatedPlan({
+                                      ...updatedPlan,
+                                      plan: e.target.value,
+                                    })
+                                  }
+                                  className="w-full p-2 border border-gray-300 rounded mt-1"
+                                />
+                              ) : (
+                                <h3 className="text-lg font-medium">
+                                  {plan.task}
+                                </h3>
+                              )}
+                              <p className="text-sm text-gray-500">
+                                मिति: {Date(plan.date)}
+                              </p>
+                            </div>
+                          </div>
 
-                      <div className="flex w-[90vh] justify-between  items-center space-x-2">
-                        <p>आम्दानी: Rs. {plan.revenue}</p>
-                        <p>खर्च: Rs. {plan.cost}</p>
-                        <p>
-                          {Number(plan.revenue) > Number(plan.cost) ? (
-                            <p className="text-yellow-400 ">{`+ Rs.${
-                              plan.revenue - plan.cost
-                            }`}</p>
-                          ) : (
-                            <p className="text-orange-800">{`- Rs.${
-                              plan.cost - plan.revenue
-                            }`}</p>
-                          )}
-                        </p>
-                      </div>
-                    </div>
-                        }
-                        </>
+                          <div className="flex w-[90vh] justify-between  items-center space-x-2">
+                            <p>आम्दानी: Rs. {plan.revenue}</p>
+                            <p>खर्च: Rs. {plan.cost}</p>
+                            <p>
+                              {Number(plan.revenue) > Number(plan.cost) ? (
+                                <p className="text-yellow-400 ">{`+ Rs.${
+                                  plan.revenue - plan.cost
+                                }`}</p>
+                              ) : (
+                                <p className="text-orange-800">{`- Rs.${
+                                  plan.cost - plan.revenue
+                                }`}</p>
+                              )}
+                            </p>
+                          </div>
+                        </div>
+                      )}
+                    </>
                   );
                 })}
             </div>
@@ -304,62 +327,62 @@ useEffect(() => {
           <div>
             {" "}
             <div>
-            {!!diaries &&
+              {!!diaries &&
                 diaries.length > 0 &&
                 diaries.map((plan, index) => {
                   return (
                     <>
-                   {plan.revenue <
-                   
-                   plan.cost && 
-                    <div
-                      key={index}
-                      className="flex w-full  items-center bg-blue-100 justify-between p-4 border border-gray-300 rounded-lg mt-2 cursor-pointer"
-                    >
-                      <div className="flex w-full  items-center">
-                        <div className="mr-4">
-                          <FaCalendarAlt className="text-blue-500" />
-                        </div>
-                        <div>
-                          {isEditing === index ? (
-                            <input
-                              type="text"
-                              value={updatedPlan.plan}
-                              onChange={(e) =>
-                                setUpdatedPlan({
-                                  ...updatedPlan,
-                                  plan: e.target.value,
-                                })
-                              }
-                              className="w-full p-2 border border-gray-300 rounded mt-1"
-                            />
-                          ) : (
-                            <h3 className="text-lg font-medium">{plan.task}</h3>
-                          )}
-                          <p className="text-sm text-gray-500">
-                            मिति: {Date(plan.date)}
-                          </p>
-                        </div>
-                      </div>
+                      {plan.revenue > plan.cost && (
+                        <div
+                          key={index}
+                          className="flex w-full  items-center bg-blue-100 justify-between p-4 border border-gray-300 rounded-lg mt-2 cursor-pointer"
+                        >
+                          <div className="flex w-full  items-center">
+                            <div className="mr-4">
+                              <FaCalendarAlt className="text-blue-500" />
+                            </div>
+                            <div>
+                              {isEditing === index ? (
+                                <input
+                                  type="text"
+                                  value={updatedPlan.plan}
+                                  onChange={(e) =>
+                                    setUpdatedPlan({
+                                      ...updatedPlan,
+                                      plan: e.target.value,
+                                    })
+                                  }
+                                  className="w-full p-2 border border-gray-300 rounded mt-1"
+                                />
+                              ) : (
+                                <h3 className="text-lg font-medium">
+                                  {plan.task}
+                                </h3>
+                              )}
+                              <p className="text-sm text-gray-500">
+                                मिति: {Date(plan.date)}
+                              </p>
+                            </div>
+                          </div>
 
-                      <div className="flex w-[90vh] justify-between  items-center space-x-2">
-                        <p>आम्दानी: Rs. {plan.revenue}</p>
-                        <p>खर्च: Rs. {plan.cost}</p>
-                        <p>
-                          {Number(plan.revenue) > Number(plan.cost) ? (
-                            <p className="text-yellow-400 ">{`+ Rs.${
-                              plan.revenue - plan.cost
-                            }`}</p>
-                          ) : (
-                            <p className="text-orange-800">{`- Rs.${
-                              plan.cost - plan.revenue
-                            }`}</p>
-                          )}
-                        </p>
-                      </div>
-                    </div>
-                        }
-                        </>
+                          <div className="flex w-[90vh] justify-between  items-center space-x-2">
+                            <p>आम्दानी: Rs. {plan.revenue}</p>
+                            <p>खर्च: Rs. {plan.cost}</p>
+                            <p>
+                              {Number(plan.revenue) > Number(plan.cost) ? (
+                                <p className="text-yellow-400 ">{`+ Rs.${
+                                  plan.revenue - plan.cost
+                                }`}</p>
+                              ) : (
+                                <p className="text-orange-800">{`- Rs.${
+                                  plan.cost - plan.revenue
+                                }`}</p>
+                              )}
+                            </p>
+                          </div>
+                        </div>
+                      )}
+                    </>
                   );
                 })}
             </div>

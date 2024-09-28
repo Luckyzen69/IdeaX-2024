@@ -131,6 +131,17 @@ const Diary = () => {
           <h2 className="text-lg  font-bold">कुल खर्च</h2>
           <p className="text-xl">Rs.4000</p>
         </div>
+        {true ? (
+          <div className=" w-[45%]   p-4   bg-blue-100 rounded-lg">
+            <h2 className="text-lg  font-bold">कुल  नाफा</h2>
+            <p className="text-xl text-yellow-00 ">+ Rs.500 </p>
+          </div>
+        ) : (
+          <div className=" w-[45%]  p-4   bg-blue-100 rounded-lg">
+            <h2 className="text-lg  font-bold">कुल नोक्सान</h2>
+            <p className="text-xl text-orange-500 ">- Rs.300 </p>
+          </div>
+        )}
       </div>
 
       <div className="flex w-[80vh] mt-16 justify-between ">
@@ -204,7 +215,7 @@ const Diary = () => {
                     </Link>
                   
                     <div className="flex items-center space-x-2">
-                   Rs.10000
+                   Rs.1000
                     </div>
                   </div>
             

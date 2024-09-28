@@ -30,16 +30,7 @@ export const signin = (email, password) => {
 };
 
 
-export const signout = async () => {
-    try {
-        const response = await account.deleteSession('current');
-        console.log('Logout successful:', response);
-        return response;
-    } catch (error) {
-        console.log('Logout error:', error);
-        throw error;
-    }
-};
+
 
 
 export const getCurrentUser = async () => {

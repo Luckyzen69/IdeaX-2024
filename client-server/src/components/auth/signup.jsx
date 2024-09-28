@@ -9,23 +9,25 @@ import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa6";
 import { signup } from "../../appwrite/session";
 import { createItem } from "../../api/api";
+import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
-  const [firstname, setfirstname] = useState('');
-  const [lastname, setlastname] = useState('');
-  const [email, setemail] = useState('');
-  const [password, setpassword] = useState('');
-  const [gender, setgender] = useState('male');
-  const [role, setrole] = useState('user');
-  const [phone, setphone] = useState('');
+  const [firstname, setfirstname] = useState("");
+  const [lastname, setlastname] = useState("");
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
+  const [gender, setgender] = useState("male");
+  const [role, setrole] = useState("user");
+  const [phone, setphone] = useState("");
+  const navigate = useNavigate();
 
   async function handleSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
     try {
       if (!!email && !!password) {
-        console.log('in submit')
+        console.log("in submit");
         const response = await signup(email, password);
-       const createResponce= await createItem("signup", {
+        const createResponce = await createItem("signup", {
           firstName: `${firstname}`,
           lastName: `${lastname}`,
           email: `${email}`,
@@ -34,8 +36,9 @@ export default function Signup() {
           phoneNumber: `${phone}`,
         });
 
-        console.log(createResponce,response)
-        console.log('done bro !!')
+        console.log(createResponce, response);
+        console.log("done bro !!");
+        navigate("/login");
       }
     } catch (err) {
       console.log("error occured during signup :", err);
@@ -51,7 +54,7 @@ export default function Signup() {
         <div className="bg-purewhite border border-accent rounded-lg m-2 p-4">
           <h2 className="text-center font-bold text-xl">Signup</h2>
           <form
-            onSubmit={(e)=>handleSubmit(e)}
+            onSubmit={(e) => handleSubmit(e)}
             className="m-2 p-2 flex flex-col space-y-5 "
           >
             <div className="flex sm:space-x-3">
