@@ -17,7 +17,7 @@ import Category from "./components/businessDiary/category/category";
 
 import Crops from "./components/regional-crops/crops";
 import Diary from "./components/businessDiary/diary";
-import Parent from "./components/regional-crops/PARENT.JSX";
+import Parent from "./components/regional-crops/parent";
 import Diseases from "./components/courses/diseases";
 import ScrollToTop from "./components/scrolltoTop";
 function App() {
