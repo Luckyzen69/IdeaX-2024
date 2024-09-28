@@ -7,11 +7,13 @@ const planSchema = new Schema({
         type: String,
         required: true
     },
-    authorId: {
-        type: Schema.Types.ObjectId,
+    date:{
+        type: Date,
+        default: Date.now
+    },
+    email: {
         required: true,
-        ref: 'User'
-   
+        type: String
     }
 });
 

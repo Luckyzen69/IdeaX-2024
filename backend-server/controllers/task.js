@@ -1,12 +1,12 @@
 const Diary = require("../models/diary");
+const Plan = require("../models/plan");
 
 const createDiaryEntry = async (req, res) => {
   try {
-    const { planId, task, date, revenue, cost } = req.body;
+    const { planId, task, revenue, cost } = req.body;
     const newDiaryEntry = new Diary({
       planId,
       task,
-      date,
       revenue,
       cost,
     });
@@ -27,10 +27,10 @@ const createDiaryEntry = async (req, res) => {
 const updateDiaryEntryById = async (req, res) => {
   try {
     const { id } = req.params;
-    const {  task, date, revenue, cost } = req.body;
+    const { task, date, revenue, cost } = req.body;
     const updatedDiaryEntry = await Diary.findByIdAndUpdate(
       id,
-      {  task, date, revenue, cost },
+      { task, date, revenue, cost },
       { new: true }
     );
     if (!updatedDiaryEntry) {
@@ -62,13 +62,14 @@ const deleteDiaryEntryById = async (req, res) => {
 const readDiariesByPlanId = async (req, res) => {
   try {
     const { planId } = req.params;
+    console.log(planId);
     const diaries = await Diary.find({ planId });
-    if (!diaries.length) {
-      return res
-        .status(404)
-        .json({ message: "No diary entries found for this plan" });
-    }
-    res.status(200).json(diaries);
+    const plandata = await Plan.findById(planId);
+
+  
+      return res.status(200).json({ diaries, plandata });
+
+
   } catch (error) {
     res
       .status(500)
@@ -80,5 +81,5 @@ module.exports = {
   createDiaryEntry,
   updateDiaryEntryById,
   deleteDiaryEntryById,
-  readDiariesByPlanId
+  readDiariesByPlanId,
 };

@@ -14,7 +14,12 @@ import CropData from "./components/regional-crops/cropsData";
 import { getCurrentUser } from "./appwrite/session";
 import Community from "./components/community/community";
 import Market from "./components/market/market";
+
+import Category from "./components/businessDiary/category/category";
+
+
 import Crops from "./components/regional-crops/crops";
+
 import Diary from "./components/businessDiary/diary";
 import Parent from "./components/regional-crops/PARENT.JSX";
 import Diseases from "./components/courses/diseases";
@@ -53,6 +58,7 @@ function App() {
           <Route path="/business-diary" element={<Diary />} />
           <Route path="/regional-crops/टमाटर" element={<CropData />} />
           <Route path="/courses/player/:id" element={<Player />} />
+          <Route path="/business-diary/:id" element={<Category />} />
         </Routes>
       </div>
     </>
