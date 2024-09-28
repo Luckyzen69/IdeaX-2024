@@ -14,10 +14,15 @@ import CropData from "./components/regional-crops/cropsData";
 import { getCurrentUser } from "./appwrite/session";
 import Community from "./components/community/community";
 import Market from "./components/market/market";
+
 import Category from "./components/businessDiary/category/category";
 
-import Diary from "./components/businessDiary/diary";
 
+import Crops from "./components/regional-crops/crops";
+
+import Diary from "./components/businessDiary/diary";
+import Parent from "./components/regional-crops/PARENT.JSX";
+import Diseases from "./components/courses/diseases";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
 
@@ -47,9 +52,11 @@ function App() {
           <Route path="/user" element={<User />} />
           <Route path="/community" element={<Community />} />
           <Route path="/market" element={<Market />} />
-          <Route path="/regional-crops" element={<Region />} />
+          <Route path="/courses/player/:id/diseases" element={<Diseases />} />
+          <Route path="/regional-crops" element={<Parent />} />
+          <Route path="/regional-crops/crops" element={<Crops />} />
           <Route path="/business-diary" element={<Diary />} />
-          <Route path="/regional-crops/Tomato" element={<CropData />} />
+          <Route path="/regional-crops/टमाटर" element={<CropData />} />
           <Route path="/courses/player/:id" element={<Player />} />
           <Route path="/business-diary/:id" element={<Category />} />
         </Routes>

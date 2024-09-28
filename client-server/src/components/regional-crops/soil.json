@@ -1,0 +1,30 @@
+[
+    {
+        "coord": {
+            "lon": 80.695,
+            "lat": 28.746
+        },
+        "parentsoil": "Fluvial non calcareous",
+        "ph": 6.98,
+        "clay": "22.19 %",
+        "organicMatter": "2.26 %",
+        "totalNitrogen": "0.12 %",
+        "boron": "1.09 ppm",
+        "p2o5": "74.16 kg/ha",
+        "sand": "30.36 %"
+    },
+    {
+        "coord": {
+            "lon": 85.332,
+            "lat": 27.697
+        },
+        "parentsoil": "Fluvial non calcareous",
+        "ph": 6.32,
+        "clay": "19.22 %",
+        "organicMatter": "2.47 %",
+        "totalNitrogen": "0.13 %",
+        "boron": "1.07 ppm",
+        "p2o5": "428.57 kg/ha",
+        "sand": "49.69 %"
+    }
+]
