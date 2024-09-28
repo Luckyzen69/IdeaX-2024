@@ -1,22 +1,20 @@
 // Diseases.js
 import React from 'react';
-import disease from './disease'; // Adjust the path as necessary
-import { useParams } from 'react-router-dom'; // Import useParams for routing
+import disease from './disease';
+import { useParams } from 'react-router-dom';
 
 export default function Diseases() {
-  const { id } = useParams(); // Get the ID from the URL parameters
-  const diseaseData = disease.find(diseaseD => diseaseD.id === id); // Find the disease by ID
+  const { id } = useParams(); 
+  const diseaseData = disease.find(diseaseD => diseaseD.id === id);
 
-  // If no disease is found, you can handle that case
   if (!diseaseData) {
-    return <div>रोग भेटिएन।</div>; // "Disease not found" in Nepali
+    return <div>रोग भेटिएन।</div>;
   }
 
   return (
     <>
     <div className='m-4 flex flex-col'>
-
-   
+      <h2 className='text-2xl font-bold text-center'>रोग र यसको समाधान</h2>
     <div className=' items-center flex m-2 p-2'>
       <div className='flex flex-col  sm:flex-row'>
       <img className='aspect-square  sm:w-96 ' src={diseaseData["1"].Picture} alt={diseaseData["1"].Name} />

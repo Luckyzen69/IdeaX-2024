@@ -18,6 +18,7 @@ import Crops from "./components/regional-crops/crops";
 import Diary from "./components/businessDiary/diary";
 import Parent from "./components/regional-crops/PARENT.JSX";
 import Diseases from "./components/courses/diseases";
+import ScrollToTop from "./components/scrolltoTop";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(true);
 
@@ -39,6 +40,7 @@ function App() {
     <>
       <div className={isLoggedIn ? 'sm:pl-52' : 'flex flex-col justify-between'}>
         {isLoggedIn ? <Sidebar /> : <Header />}
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/courses" element={<Course />} />

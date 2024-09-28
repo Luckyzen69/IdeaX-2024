@@ -5,7 +5,6 @@ export default function Crops({ latitude, longitude }) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const axios = require('axios');
 
   const fetchData = async () => {
     setLoading(true);
@@ -20,17 +19,19 @@ export default function Crops({ latitude, longitude }) {
 
       const token = tokenResponse.data.token;
 
-      const dataResponse = await axios.get(`https://soil.narc.gov.np/soil/soildata/?lon=${lon}.695&lat=${lat}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        params: {
-          lon: longitude,
-          lat: latitude,
-        },
-      });
+      let config = {
+        method: 'get',
+        maxBodyLength: Infinity,
+        url: `https://soil.narc.gov.np/soil/soildata/?lon=${longitude}&lat=${latitude}`,
+        headers: { 
+          'Authorization': `Bearer ${token}`
+        }
+      };
 
-      setData(dataResponse.data);
+      // Use await to capture the response of the request
+      const dataResponse = await axios.request(config);
+      setData(dataResponse.data); // Use dataResponse to set the data
+
     } catch (error) {
       setError(error.message);
     } finally {
