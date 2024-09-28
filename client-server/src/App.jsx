@@ -13,6 +13,8 @@ import Region from "./components/regional-crops/region";
 import CropData from "./components/regional-crops/cropsData";
 import { getCurrentUser } from "./appwrite/session";
 
+import Diary from "./components/businessDiary/diary";
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -41,6 +43,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/user" element={<User />} />
           <Route path="/regional-crops" element={<Region />} />
+          <Route path="/business-diary" element={<Diary />} />
           <Route path="/regional-crops/Tomato" element={<CropData />} />
           <Route path="/courses/player/:id" element={<Player />} />
         </Routes>
