@@ -14,6 +14,7 @@ import { getCurrentUser, logout } from "./appwrite/session";
 import Community from "./components/community/community";
 import Market from "./components/market/market";
 import Category from "./components/businessDiary/category/category";
+import UserProfile from "./components/menu/userprofile";
 
 import Crops from "./components/regional-crops/crops";
 import Diary from "./components/businessDiary/diary";
@@ -21,7 +22,7 @@ import Parent from "./components/regional-crops/parent";
 import Diseases from "./components/courses/diseases";
 import ScrollToTop from "./components/scrolltoTop";
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
 
@@ -39,9 +40,8 @@ function App() {
   return (
     <>
       <div
-        className={isLoggedIn ? "sm:pl-52" : "flex flex-col justify-between"}
-      >
-        {isLoggedIn ? <Sidebar /> : <Header />}
+        className={isLoggedIn ? "sm:pl-52" : "flex flex-col justify-between"} >
+        {isLoggedIn ? <><Sidebar /><UserProfile/></>  : <Header />}
         <ScrollToTop />
         <Routes>
           <Route path="/" element={isLoggedIn ? <Course /> : <Home />} />
